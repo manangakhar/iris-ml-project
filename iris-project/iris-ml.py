@@ -12,3 +12,28 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 
+url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset = pandas.read_csv(url, names=names)
+
+# shape / dimensions
+print("dimensions/shape")
+print(dataset.shape)
+
+# head -  print top x
+print("dataset top x")
+print(dataset.head(5))
+print("dataset top x")
+print(dataset[:5])
+
+# statistical summary data
+print("dataset statistical data summary")
+print(dataset.describe())
+
+# group by
+print("group by class")
+print(dataset.groupby('class').size())
+# cannot print directly, it gives the class reference instead (probably)
+for key, item in dataset.groupby('class'):
+    print(dataset.groupby('class').get_group(key))
+
